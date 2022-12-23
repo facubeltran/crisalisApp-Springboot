@@ -4,6 +4,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import group.crisalis.exception.custom.EmptyElementException;
+import group.crisalis.exception.custom.NotCreatedException;
+import group.crisalis.model.User;
 import group.crisalis.model.dto.UserDTO;
 import group.crisalis.repository.UserRepository;
 
@@ -15,8 +17,11 @@ public class UserService {
     public UserService(UserRepository userRepository){
         this.userRepository= userRepository;
     }
-    public void saveUser(UserDTO userDTO){
-        if(checkUserDTO(userDTO));
+    public User saveUser(UserDTO userDTO){
+        if(checkUserDTO(userDTO)){
+            return this.userRepository.save(new User(userDTO));
+        }
+        throw new NotCreatedException("Error in save new user");
     }
 
     private Boolean checkUserDTO(UserDTO userDTO){

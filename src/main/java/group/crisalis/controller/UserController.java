@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import group.crisalis.model.User;
 import group.crisalis.model.dto.UserDTO;
 import group.crisalis.service.UserService;
 
@@ -21,8 +22,8 @@ public class UserController {
 
 
     @PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void saveUser(@RequestBody UserDTO userDTO){
-        this.userService.saveUser(userDTO);
+    public User saveUser(@RequestBody UserDTO userDTO){
+        return this.userService.saveUser(userDTO);
     }
 
 
