@@ -1,9 +1,11 @@
 package group.crisalis.controller;
 
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import group.crisalis.model.User;
@@ -26,5 +28,8 @@ public class UserController {
         return this.userService.saveUser(userDTO);
     }
 
-
+    @GetMapping(value = "login", produces = MediaType.APPLICATION_JSON_VALUE)
+    public UserDTO loginUser(@RequestParam String username, @RequestParam String password){
+        return this.userService.loginUserWithCredentials(username, password);
+    }
 }

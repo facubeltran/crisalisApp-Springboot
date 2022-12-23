@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import group.crisalis.exception.custom.EmptyElementException;
 import group.crisalis.exception.custom.NotCreatedException;
+import group.crisalis.exception.custom.UnauthorizedException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,4 +25,15 @@ public class ApiExceptionHandler {
     public ErrorMessage badRequest(HttpServletRequest request,Exception exception){
         return new ErrorMessage(exception, request.getRequestURI());
     }
+
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler({
+        UnauthorizedException.class
+    })
+    @ResponseBody
+    public void unauthorized() {
+        //http 401 no retorna nada
+        
+    }
+
 }

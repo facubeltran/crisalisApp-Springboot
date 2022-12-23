@@ -9,7 +9,7 @@ import group.crisalis.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer>{
-    Optional<User> findByName(String name);
+    Optional<User> findByUsernameAndPassword(String username,String password);
     
 
 
