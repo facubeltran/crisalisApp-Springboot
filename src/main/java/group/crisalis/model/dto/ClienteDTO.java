@@ -1,5 +1,7 @@
 package group.crisalis.model.dto;
 
+import java.util.Collection;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import group.crisalis.model.Servicio;
@@ -27,7 +29,5 @@ public class ClienteDTO {
     @JsonProperty("CUIL")
     private Integer cuil;
 
-    @JsonProperty("servicioContratado")
-    private Servicio servicioContratado;
 
 }

@@ -1,5 +1,7 @@
 package group.crisalis.model;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import ch.qos.logback.core.net.server.Client;
+import group.crisalis.model.dto.ClienteDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +21,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "cliente")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Cliente {
     
     @Id
@@ -38,8 +44,25 @@ public class Cliente {
     @Column(name = "CUIL")
     private Integer cuil;
 
-    @Column(name = "servicioContratado")
-    private Servicio servicioContratado;
 
+
+    public Cliente(ClienteDTO clienteDTO) {
+        this.nombre = clienteDTO.getNombre();
+        this.telefono = clienteDTO.getTelefono();
+        this.email = clienteDTO.getEmail();
+        this.direccion = clienteDTO.getDireccion();
+        this.cuil = clienteDTO.getCuil();
+    }
+
+    public ClienteDTO toDTO(){
+        return ClienteDTO
+                    .builder()
+                    .nombre(this.nombre)
+                    .telefono(this.telefono)
+                    .email(this.email)
+                    .direccion(this.direccion)
+                    .cuil(this.cuil)
+                    .build();
+    }
 
 }
