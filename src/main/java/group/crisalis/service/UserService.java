@@ -1,5 +1,8 @@
 package group.crisalis.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +44,15 @@ public class UserService {
         }
         throw new UnauthorizedException("invalid credentials");
     }
+
+    public List<UserDTO> getListAllUsersInBD(){
+        return this.userRepository
+                .findAll()
+                .stream()
+                .map(User::toDTO)
+                .collect(Collectors.toList());
+    }
+
 
 
     private Boolean checkUserDTO(UserDTO userDTO, Boolean isForLogin){

@@ -1,5 +1,7 @@
 package group.crisalis.controller;
 
+import java.util.List;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,4 +34,10 @@ public class UserController {
     public UserDTO loginUser(@RequestParam String username, @RequestParam String password){
         return this.userService.loginUserWithCredentials(username, password);
     }
+
+    @GetMapping(value = "list", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<UserDTO> getAllUsers(){
+        return this.userService.getListAllUsersInBD();
+    }
+
 }
