@@ -21,8 +21,8 @@ public class ProductoDTO {
     @JsonProperty("montoTotal")
     private Integer montoTotal;
 
-    @JsonProperty("garantiaXAño")
-    private Integer garantiaXAño;
+    @JsonProperty("garantiaXano")
+    private Integer garantiaXano;
 
     @JsonProperty("impuesto")
     private Integer impuesto;

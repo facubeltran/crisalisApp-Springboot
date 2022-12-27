@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import group.crisalis.exception.custom.EmptyElementException;
 import group.crisalis.exception.custom.NotCreatedException;
+import group.crisalis.exception.custom.NotFoundException;
 import group.crisalis.exception.custom.UnauthorizedException;
 import group.crisalis.model.Cliente;
 import group.crisalis.model.dto.ClienteDTO;
@@ -37,10 +38,34 @@ public class ClienteService {
                 .collect(Collectors.toList());
     }
 
-    public ClienteDTO getCliente(String nombre){
-        return clienteRepository.findByNombre(nombre).orElseThrow(
-            () -> new UnauthorizedException("no se encuentra el cliente")
+    public ClienteDTO getById(Integer id){
+        return clienteRepository.findById(id).orElseThrow(
+            () -> new NotFoundException("no se encuentra el cliente")
         ).toDTO();
+    }
+
+
+    public ClienteDTO getByNombre(String nombre){
+        return clienteRepository.findByNombre(nombre).orElseThrow(
+            () -> new NotFoundException("no se encuentra el cliente")
+        ).toDTO();
+    }
+
+    public ClienteDTO getByEmail(String email){
+        return clienteRepository.findByEmail(email).orElseThrow(
+            () -> new NotFoundException("no se encuentra el cliente")
+        ).toDTO();
+    }
+
+    public ClienteDTO getByCuil(Integer cuil){
+        return clienteRepository.findByCuil(cuil).orElseThrow(
+            () -> new NotFoundException("no se encuentra el cliente")
+        ).toDTO();
+    }
+
+
+    public void remove(Integer id) {
+        clienteRepository.delete(clienteRepository.findById(id).get());
     }
 
 

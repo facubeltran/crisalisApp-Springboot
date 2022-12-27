@@ -11,4 +11,8 @@ import group.crisalis.model.Cliente;
 public interface ClienteRepository extends JpaRepository<Cliente,Integer>{
     Optional<Cliente> findByNombre(String nombre);
     Optional<Cliente> findById(Integer id);
+    Optional<Cliente> findByEmail(String email);
+    Optional<Cliente> findByCuil(Integer cuil);
+    
+
 }

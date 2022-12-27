@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 
+import group.crisalis.model.dto.ProductoDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,10 +35,31 @@ public class Producto {
     @Column(name = "montoTotal")
     private Integer montoTotal;
 
-    @Column(name = "garantiaXAño")
-    private Integer garantiaXAño;
+    @Column(name = "garantiaXano")
+    private Integer garantiaXano;
 
     @Column(name = "impuesto")
     private Integer impuesto;
+
+
+    public Producto(ProductoDTO productoDTO) {
+        this.nombre = productoDTO.getNombre();
+        this.subtotal = productoDTO.getSubtotal();
+        this.montoTotal = productoDTO.getMontoTotal();
+        this.garantiaXano = productoDTO.getGarantiaXano();
+        this.impuesto = productoDTO.getImpuesto();
+    }
+
+    public ProductoDTO toDTO(){
+        return ProductoDTO
+                    .builder()
+                    .nombre(this.nombre)
+                    .subtotal(this.subtotal)
+                    .montoTotal(this.montoTotal)
+                    .garantiaXano(this.garantiaXano)
+                    .impuesto(this.impuesto)
+                    .build();
+    }
+
 
 }

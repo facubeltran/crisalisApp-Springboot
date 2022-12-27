@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import group.crisalis.exception.custom.EmptyElementException;
 import group.crisalis.exception.custom.NotCreatedException;
+import group.crisalis.exception.custom.NotFoundException;
 import group.crisalis.exception.custom.UnauthorizedException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,5 +36,15 @@ public class ApiExceptionHandler {
         //http 401 no retorna nada
         
     }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler({
+        NotFoundException.class
+    })
+    @ResponseBody
+    public ErrorMessage notFound(HttpServletRequest request,Exception exception) {
+        return new ErrorMessage(exception,request.getRequestURI());
+    }
+
 
 }
