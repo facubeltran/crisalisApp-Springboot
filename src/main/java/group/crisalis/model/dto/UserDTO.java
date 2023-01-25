@@ -1,15 +1,17 @@
 package group.crisalis.model.dto;
 
-import org.springframework.security.access.method.P;
+
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class UserDTO {
 

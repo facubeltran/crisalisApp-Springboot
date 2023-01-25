@@ -63,6 +63,9 @@ public class ClienteService {
         ).toDTO();
     }
 
+    public List<Cliente> getLikeNombre(String nombre) {
+        return (List<Cliente>)clienteRepository.findByNombreContainingIgnoreCase(nombre);
+    }
 
     public void remove(Integer id) {
         clienteRepository.delete(clienteRepository.findById(id).get());

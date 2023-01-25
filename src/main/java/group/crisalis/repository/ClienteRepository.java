@@ -1,5 +1,6 @@
 package group.crisalis.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,6 +14,6 @@ public interface ClienteRepository extends JpaRepository<Cliente,Integer>{
     Optional<Cliente> findById(Integer id);
     Optional<Cliente> findByEmail(String email);
     Optional<Cliente> findByCuil(Integer cuil);
-    
+    public abstract List<Cliente>findByNombreContainingIgnoreCase(String nombre);
 
 }

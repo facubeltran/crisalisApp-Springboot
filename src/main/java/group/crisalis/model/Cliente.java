@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import ch.qos.logback.core.net.server.Client;
+
 import group.crisalis.model.dto.ClienteDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,7 +33,7 @@ public class Cliente {
     private String nombre;
 
     @Column(name = "telefono")
-    private Integer telefono;
+    private String telefono;
 
     @Column(name = "email")
     private String email;
@@ -42,7 +42,7 @@ public class Cliente {
     private String direccion;
 
     @Column(name = "CUIL")
-    private Integer cuil;
+    private String cuil;
 
 
 

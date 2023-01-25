@@ -17,7 +17,7 @@ import group.crisalis.model.dto.ClienteDTO;
 import group.crisalis.service.ClienteService;
 
 @RestController
-@RequestMapping("cliente")
+@RequestMapping("clienteRest")
 public class ClienteController {
     
     private final ClienteService clienteService;

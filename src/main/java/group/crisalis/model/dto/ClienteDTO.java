@@ -8,17 +8,19 @@ import group.crisalis.model.Servicio;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @Builder
+@NoArgsConstructor
 public class ClienteDTO {
     
     @JsonProperty("nombre")
     private String nombre;
 
     @JsonProperty("telefono")
-    private Integer telefono;
+    private String telefono;
 
     @JsonProperty("email")
     private String email;
@@ -27,7 +29,7 @@ public class ClienteDTO {
     private String direccion;
 
     @JsonProperty("CUIL")
-    private Integer cuil;
+    private String cuil;
 
 
 }
