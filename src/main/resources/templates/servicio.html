@@ -60,41 +60,41 @@
 
 <body>
     <h1>Servicios</h1>
-    <form th:object="${cliente}" th:action="@{/saveCliente}" method="post">
+    <form th:object="${servicio}" th:action="@{/saveServicio}" method="post">
         <table>
             <tr>
                 <td>
                     <div class="form-group">
                         <label for="">Nombre</label>
-                        <input type="text" th:field="*{nombre}" class="form-control" name="" id=""
+                        <input type="text" th:field="*{nombre}" class="form-control" name="nombre" id="nombre"
                             aria-describedby="helpId" placeholder="">
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
-                        <label for="">Telefono</label>
-                        <input type="text" th:field="*{telefono}" class="form-control" name="" id=""
+                        <label for="">Monto por mes</label>
+                        <input type="text" th:field="*{montoMensual}" class="form-control" name="montoMensual" id="montoMensual"
                             aria-describedby="helpId" placeholder="">
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
-                        <label for="">Email</label>
-                        <input type="email" th:field="*{email}" class="form-control" name="" id=""
+                        <label for="">Iva</label>
+                        <input type="text" th:field="*{iva}" class="form-control" name="iva" id="iva"
                             aria-describedby="helpId" placeholder="">
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
-                        <label for="">Direccion</label>
-                        <input type="text" th:field="*{direccion}" class="form-control" name="" id=""
+                        <label for="">IIBB</label>
+                        <input type="text" th:field="*{iibb}" class="form-control" name="iibb" id="iibb"
                             aria-describedby="helpId" placeholder="">
                     </div>
                 </td>
                 <td>
                     <div class="form-group">
-                        <label for="">CUIL</label>
-                        <input type="text" th:field="*{cuil}" class="form-control" name="" id=""
+                        <label for="">Soporte Adicional</label>
+                        <input type="text" th:field="*{soporteAdicional}" class="form-control" name="soporteAdicional" id="soporteAdicional"
                             aria-describedby="helpId" placeholder="">
                     </div>
                 </td>
@@ -109,23 +109,25 @@
 
     <div class="form-group">
         <form method="get">
-            <input type="text" class="form-control" name="buscarNombre" id="" aria-describedby="helpId" placeholder="">
+            <input type="text" class="form-control" name="buscarNombre" id="" aria-describedby="helpId" placeholder="¿Que servicio busca?">
             <button type="submit" class="btn btn-primary">Buscar</button>
         </form>
         <table>
             <tr>
-                <th>Id</th>
+                
                 <th>Nombre</th>
-                <th>Telefono</th>
-                <th>Direccion</th>
-                <th>CUIL</th>
+                <th>Monto por mes</th>
+                <th>IVA</th>
+                <th>IIBB</th>
+                <th>Soporte Adicional</th>
             </tr>
-            <tr th:each="cliente : ${likeNombre}">
-                <td th:text="${cliente.id}"></td>
-                <td th:text="${cliente.nombre}"></td>
-                <td th:text="${cliente.telefono}"></td>
-                <td th:text="${cliente.direccion}"></td>
-                <td th:text="${cliente.cuil}"></td>
+            <tr th:each="servicio : ${likeNombre}">
+                
+                <td th:text="${servicio.nombre}"></td>
+                <td th:text="${servicio.montoMensual}"></td>
+                <td th:text="${servicio.iva}"></td>
+                <td th:text="${servicio.iibb}"></td>
+                <td th:text="${servicio.soporteAdicional}"></td>
             </tr>
         </table>
 

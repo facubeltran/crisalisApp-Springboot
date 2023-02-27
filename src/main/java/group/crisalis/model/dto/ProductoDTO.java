@@ -6,10 +6,12 @@ import group.crisalis.model.Servicio;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @Builder
+@NoArgsConstructor
 public class ProductoDTO {
     
     @JsonProperty("nombre")

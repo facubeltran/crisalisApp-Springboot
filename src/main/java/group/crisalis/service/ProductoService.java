@@ -49,6 +49,14 @@ public class ProductoService {
         ).toDTO();
     }
 
+    public List<ProductoDTO> getLikeNombre(String nombre){
+        return this.productoRepository
+            .findByNombreContainingIgnoreCase(nombre)
+            .stream()
+            .map(Producto::toDTO)
+            .collect(Collectors.toList());
+    }
+
     public void remove(Integer id){
         productoRepository.delete(productoRepository.findById(id).get());
     }

@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import group.crisalis.model.dto.ClienteDTO;
+import group.crisalis.model.dto.ProductoDTO;
+import group.crisalis.model.dto.ServicioDTO;
 import group.crisalis.model.dto.UserDTO;
 import group.crisalis.service.ClienteService;
+import group.crisalis.service.ProductoService;
+import group.crisalis.service.ServicioService;
 import group.crisalis.service.UserService.UserService;
 import group.crisalis.service.UserService.UserServiceImpl;
 
@@ -20,10 +24,15 @@ public class ControllerWeb {
     
     private final UserServiceImpl userServiceImpl;
     private final ClienteService clienteService;
+    private final ServicioService servicioService;
+    private final ProductoService productoService;
 
-    public ControllerWeb(UserServiceImpl userServiceImpl, ClienteService clienteService){
+    public ControllerWeb(UserServiceImpl userServiceImpl, ClienteService clienteService
+        ,ServicioService servicioService, ProductoService productoService){
         this.userServiceImpl = userServiceImpl;
         this.clienteService = clienteService;
+        this.servicioService = servicioService;
+        this.productoService = productoService;
     }
 
     @GetMapping(value = "/")
@@ -95,6 +104,49 @@ public class ControllerWeb {
     }
 
 
+    @GetMapping(value = "servicio")
+    public String mostrarServicio(@RequestParam(name = "buscarNombre", required = false, defaultValue = "") String buscarNombre, Model model ){
+        model.addAttribute("likeNombre", servicioService.getLikeNombre(buscarNombre));
+        return "servicio";
+    }
+
+    @ModelAttribute("servicio")
+    public ServicioDTO returnNewService() {
+        return new ServicioDTO();
+    }
+
+    @PostMapping(value = "/saveServicio")
+    public String nuevoServicio(ServicioDTO servicioDTO) {
+        try {
+            
+             servicioService.saveServicio(servicioDTO);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return "redirect:/servicio?exito";
+    }
+
+    @GetMapping(value = "producto")
+    public String mostrarProducto(@RequestParam(name = "buscarNombre", required = false, defaultValue = "") String buscarNombre, Model model ){
+        model.addAttribute("likeNombre", productoService.getLikeNombre(buscarNombre));
+        return "producto";
+    }
+
+    @ModelAttribute("producto")
+    public ProductoDTO returnNewProducto() {
+        return new ProductoDTO();
+    }
+
+    @PostMapping(value = "/saveProducto")
+    public String nuevoServicio(ProductoDTO productoDTO) {
+        try {
+            
+             productoService.saveProducto(productoDTO);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return "redirect:/producto?exito";
+    }
 
 }
 
